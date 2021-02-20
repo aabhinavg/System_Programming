@@ -21,4 +21,4 @@ int main(void) {
     free(buf);
     return EXIT_SUCCESS;
 }
-~    
+ 
