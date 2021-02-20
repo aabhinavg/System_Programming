@@ -1,23 +1,22 @@
-#define _XOPEN_SOURCE 700
-#include <assert.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
 
 int main(void) {
-    long n;
+    long current_location;
     char *buf;
 
-    n = pathconf(".", _PC_PATH_MAX);
-    assert(n != -1);
-    buf = malloc(n * sizeof(*buf));
-    assert(buf);
-    if (getcwd(buf, n) == NULL) {
-        perror("getcwd");
-        exit(EXIT_FAILURE);
-    } else {
-        printf("%s\n", buf);
-    }
+    current_location = pathconf(".", _PC_PATH_MAX);
+    buf = malloc(current_location * sizeof(*buf));
+    if (getcwd(buf, current_location) == NULL) 
+    {
+                perror("getcwd");
+                 exit(EXIT_FAILURE);
+    } 
+    else 
+    {           printf("%s\n", buf);    }
+    
     free(buf);
     return EXIT_SUCCESS;
 }
+~    
